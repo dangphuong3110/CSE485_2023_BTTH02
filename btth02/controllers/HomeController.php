@@ -7,6 +7,7 @@ class HomeController{
         $articelService = new ArticleService();
         $articles = $articelService->getAllArticles();
         // Nhiệm vụ 2: Tương tác với View
+        $title = 'Trang chủ';
         include("views/home/index.php");
     }
 }

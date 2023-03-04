@@ -3,22 +3,43 @@ include("configs/DBConnection.php");
 include("models/Article.php");
 class ArticleService{
     public function getAllArticles(){
-        // 4 bước thực hiện
-       $dbConn = new DBConnection();
-       $conn = $dbConn->getConnection();
+        $dbConn = new DBConnection();
+        $conn = $dbConn->getConnection();
 
-        // B2. Truy vấn
-        $sql = "SELECT * FROM article INNER JOIN category ON article.category_id=category.id";
+        $sql = "SELECT bv.ma_bviet, bv.tieude, bv.ten_bhat, bv.hinhanh, bv.tomtat, bv.noidung, bv.ngayviet,
+                        tg.ten_tgia     AS tacgia,
+                        tl.ten_tloai    AS theloai
+                    FROM baiviet        AS bv
+                    INNER JOIN tacgia   AS tg ON bv.ma_tgia = tg.ma_tgia
+                    INNER JOIN theloai  AS tl ON bv.ma_tloai = tl.ma_tloai
+                    ORDER BY bv.ma_bviet
+                    LIMIT 8;";
         $stmt = $conn->query($sql);
 
-        // B3. Xử lý kết quả
         $articles = [];
         while($row = $stmt->fetch()){
-            $article = new Article($row['title'], $row['summary'], $row['name']);
-            array_push($articles,$article);
+            $article = new Article($row['ma_bviet'], $row['tieude'], $row['ten_bhat'], $row['tomtat'], $row['noidung'], $row['ngayviet'], $row['theloai'], $row['tacgia'], $row['hinhanh']);
+            array_push($articles, $article);
         }
-        // Mảng (danh sách) các đối tượng Article Model
-
         return $articles;
+    }
+
+    public function getArticleDetail($id){
+        $dbConn = new DBConnection();
+        $conn = $dbConn->getConnection();
+
+        $sql = "SELECT bv.ma_bviet, bv.tieude, bv.ten_bhat, bv.tomtat, bv.noidung, bv.hinhanh, bv.ngayviet,
+                        tg.ten_tgia     AS tacgia,
+                        tl.ten_tloai    AS theloai
+                    FROM baiviet        AS bv
+                    INNER JOIN tacgia   AS tg ON bv.ma_tgia = tg.ma_tgia
+                    INNER JOIN theloai  AS tl ON bv.ma_tloai = tl.ma_tloai
+                    WHERE bv.ma_bviet = :id;";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $article = $stmt->fetch();
+        
+        $articleDetail = new Article($article['ma_bviet'], $article['tieude'], $article['ten_bhat'], $article['tomtat'], $article['noidung'], $article['ngayviet'], $article['theloai'], $article['tacgia'], $article['hinhanh']);
+        return $articleDetail;
     }
 }
