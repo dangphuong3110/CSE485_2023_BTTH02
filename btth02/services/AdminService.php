@@ -39,7 +39,7 @@ class AdminService {
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
 
-        $sql = "SELECT COUNT(*) AS so_luong FROM user";
+        $sql = "SELECT COUNT(*) AS so_luong FROM theloai";
         $stmt = $conn->query($sql);
         $num_of_categories = $stmt->fetch();
         return $num_of_categories;
@@ -49,7 +49,7 @@ class AdminService {
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
 
-        $sql = "SELECT COUNT(*) AS so_luong FROM user";
+        $sql = "SELECT COUNT(*) AS so_luong FROM tacgia";
         $stmt = $conn->query($sql);
         $num_of_authors = $stmt->fetch();
         return $num_of_authors;

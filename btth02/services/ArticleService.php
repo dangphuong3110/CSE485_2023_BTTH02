@@ -12,8 +12,7 @@ class ArticleService{
                     FROM baiviet        AS bv
                     INNER JOIN tacgia   AS tg ON bv.ma_tgia = tg.ma_tgia
                     INNER JOIN theloai  AS tl ON bv.ma_tloai = tl.ma_tloai
-                    ORDER BY bv.ma_bviet
-                    LIMIT 8;";
+                    ORDER BY bv.ma_bviet;";
         $stmt = $conn->query($sql);
 
         $articles = [];
