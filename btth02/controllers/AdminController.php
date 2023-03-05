@@ -1,3 +1,4 @@
+
 <?php
 class AdminController {
     public function __construct()
@@ -5,7 +6,11 @@ class AdminController {
         include("configs/session.php");
     }
     public function index() {
+        $articleService = new ArticleService();
+        $articles = $articleService->getAllArticles();
+        $num_of_articles = $articleService->getNumberOfArticles();
 
+        $title = 'Admin';
         include("views/admin/index.php");
     }
     
@@ -32,3 +37,4 @@ class AdminController {
         }
     }
 }
+
