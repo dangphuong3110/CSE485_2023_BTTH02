@@ -1,14 +1,14 @@
 <?php
 include("configs/DBConnection.php");
 include("models/Category.php");
-class CategoryServices
+class CategoryService
 {
     public function getAllCategory()
     {
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
 
-        $sql = "SELECT * FROM theloai";
+        $sql = "SELECT * FROM theloai;";
         $stmt = $conn->query($sql);
 
         $categories = [];
@@ -20,81 +20,49 @@ class CategoryServices
         return $categories;
     }
 
-    public function editCategory($id)
-    {
+    public function getCategoryDetail($id){
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
 
-        $sql = "SELECT * FROM theloai WHERE ma_tloai = '" . $id . "'";
-        $stmt = $conn->query($sql);
+        $sql = "SELECT ma_tloai, ten_tloai, SLBaiViet FROM theloai WHERE ma_tloai = :ma_tloai;";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['ma_tloai' => $id]);
 
-        $categories = [];
-        while($row = $stmt->fetch()){
-            $category = new Category($row['ma_tloai'], $row['ten_tloai'], $row['SLBaiViet']);
-            array_push($categories, $category);
-        }
-
-        return $categories;
+        $row = $stmt->fetch();
+        $category = new Category($row['ma_tloai'], $row['ten_tloai'], $row['SLBaiViet']);
+        return $category;
     }
 
-    public function updateCategory($id, $name)
+    public function updateCategory($arguments)
     {
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
 
-        $sql = "UPDATE `theloai` SET `ten_tloai` = '" . $name . "' WHERE `ma_tloai` = '" . $id . "'";
-        $stmt_update = $conn->query($sql_update);
-
-        $sql_select = "SELECT * FROM theloai";
-        $stmt_select = $con->query($sql_select);
-
-        $categories = [];
-        while($row = $stmt->fetch()){
-            $category = new Category($row['ma_tloai'], $row['ten_tloai'], $row['SLBaiViet']);
-            array_push($categories, $category);
-        }
-
-        return $categories;
+        $sql = "UPDATE theloai 
+                    SET ten_tloai = :ten_tloai
+                    WHERE ma_tloai = :ma_tloai";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arguments);
     }
 
-    public function storeCategory($name)
+    public function insertCategory($arguments)
     {
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
 
-        $sql_store = "INSERT INTO `theloai`(`ten_tloai`) VALUE ('" . $name . "')";
-        $stmt_store = $conn->query($sql_store);
-
-        $sql_select = "SELECT * FROM theloai";
-        $stmt_select = $con->query($sql_select);
-
-        $categories = [];
-        while($row = $stmt->fetch()){
-            $category = new Category($row['ma_tloai'], $row['ten_tloai'], $row['SLBaiViet']);
-            array_push($categories, $category);
-        }
-
-        return $categories;
+        $sql = "INSERT INTO theloai(ten_tloai)
+                    VALUES(:ten_tloai);";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arguments);
     }
 
     public function deleteCategory($id)
     {
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
-
-        $sql_delete = "DELETE FROM `theloai` WHERE `ma_tloai` = '" . $id . "'";
-        $stmt_delete = $conn->query($sql_delete);
-
-        $sql_select = "SELECT * FROM theloai";
-        $stmt_select = $conn->query($sql_select);
-
-        $categories = [];
-        while($row = $stmt->fetch()){
-            $category = new Category($row['ma_tloai'], $row['ten_tloai'], $row['SLBaiViet']);
-            array_push($categories, $category);
-        }
-
-        return $categories;
+        
+        $sql = "DELETE FROM theloai WHERE ma_tloai = " . $id . ";";
+        $stmt = $conn->query($sql);
     }
 }
 ?>
