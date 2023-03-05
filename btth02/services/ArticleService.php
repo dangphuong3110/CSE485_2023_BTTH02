@@ -42,4 +42,14 @@ class ArticleService{
         $articleDetail = new Article($article['ma_bviet'], $article['tieude'], $article['ten_bhat'], $article['tomtat'], $article['noidung'], $article['ngayviet'], $article['theloai'], $article['tacgia'], $article['hinhanh']);
         return $articleDetail;
     }
+
+    public function getNumberOfArticles(){
+        $dbConn = new DBConnection();
+        $conn = $dbConn->getConnection();
+
+        $sql = "SELECT COUNT(*) AS so_luong FROM baiviet";
+        $stmt = $conn->query($sql);
+        $num_of_articles = $stmt->fetch();
+        return $num_of_articles;
+    }
 }
