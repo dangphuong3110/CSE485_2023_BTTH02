@@ -1,5 +1,5 @@
 <?php
-include("configs/DBConnection.php");
+// include("configs/DBConnection.php");
 include("services/AdminService.php");
 class AdminController {
     public function __construct()
