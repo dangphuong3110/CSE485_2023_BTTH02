@@ -31,7 +31,7 @@
         <?php foreach($articles as $article) { ?>
                 <article class="col-sm-3 summary">
                     <div class="card mb-4" style="width: 100%;">
-                        <a href="index.php?controller=article&action=detail&id=<?= $article->getMa_bviet(); ?>" class="text-decoration-none">
+                        <a href="?controller=article&action=detail&id=<?= $article->getMa_bviet(); ?>" class="text-decoration-none">
                             <img src="assets/images/songs/<?= $article->getHinhanh(); ?>" 
                                 alt="<?= $article->getTieude(); ?>" class="card-img-top" style="height: 10em;">
                             <h5 class="card-title text-center fw-bold"><?= $article->getTen_bhat(); ?></h5>

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $account = filter_input_array(INPUT_POST, $validation_filters); // Validate data
     // Create error messages
     $errors['username']  = $account['username']  ? '' : 'Username must be 2-20 letters using A-z';
-    $errors['password']  = $account['password']  ? '' : 'Password must be more than 8 characters';
+    $errors['password']  = $account['password']  ? '' : 'Password must be more than 6 characters';
     $invalid = implode($errors);
     
     // Sanitizate data
@@ -27,14 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $account['username'];
         $password = hash('sha256', $account['password']);
         // Kiem tra account trong DB
-        header("Location: ?controller=login&action=checkLogin&username=$username&password=$password");
+        header("Location: ?controller=home&action=checkLogin&username=$username&password=$password");
     }
 
 }
 ?>
 
 <?php
-$title = "Login";
+$title = "Đăng nhập";
 $name_css = "style_login.css";
 include("views/layout/header_home_page.php");
 ?>
@@ -53,7 +53,7 @@ include("views/layout/header_home_page.php");
                 </div>
             </div>
             <div class="card-body">
-                <form action="?controller=login" method="POST">
+                <form action="?action=login" method="POST">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="txtUser"><i class="fas fa-user"></i></span>
                         <input type="text" class="w-75 form-control" name="username" value="<?= $account['username'] ?>"  placeholder="Username">
