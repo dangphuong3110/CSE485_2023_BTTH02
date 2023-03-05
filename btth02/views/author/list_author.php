@@ -5,16 +5,16 @@ declare(strict_types=1);
 $success = $_GET['success'] ?? null;
 $failure = $_GET['failure'] ?? null;
 $title = "Tác giả - Admin";
-require("views/layout/header_home_page.php");
+require("views/layout/header_admin.php");
 ?>
 
-<main class="container mt-5 mb-5">
+<main class="container mt-4 mb-5">
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm table-responsive-sm">
             <?php if ($success) { ?><div class="alert alert-success text-center"><?= $success ?></div><?php } ?>
             <?php if ($failure) { ?><div class="alert alert-danger"><?= $failure ?></div><?php } ?>
-            <a href="?controller=member&action=add" class="btn btn-success">Thêm mới</a>
-            <table class="table">
+            <a href="?controller=member&action=add" class="btn btn-success mb-2">Thêm mới</a>
+            <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
