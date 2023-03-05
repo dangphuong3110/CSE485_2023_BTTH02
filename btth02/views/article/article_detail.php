@@ -10,10 +10,10 @@
                     <a href="#" class="text-decoration-none fw-bold text-black"><?= $articleDetail->getTieude() ?></a>
                 </h5>
                 <p class="card-text"><span class="fw-bold">Bài hát: </span> <?= $articleDetail->getTen_bhat() ?></p>
-                <p class="card-text"><span class="fw-bold">Thể loại: </span> <?= $articleDetail->getTen_tloai() ?></p>
+                <p class="card-text"><span class="fw-bold">Thể loại: </span> <?= $nameAC['theloai'] ?></p>
                 <p class="card-text"><span class="fw-bold">Tóm tắt: </span> <?= $articleDetail->getTomtat() ?></p>
                 <p class="card-text"><span class="fw-bold">Nội dung: </span> <?= $articleDetail->getNoidung() ?></p>
-                <p class="card-text"><span class="fw-bold">Tác giả: </span> <?= $articleDetail->getTen_tgia() ?></p>
+                <p class="card-text"><span class="fw-bold">Tác giả: </span> <?= $nameAC['tacgia'] ?></p>
             </section>
        </div>
     </main>

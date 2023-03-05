@@ -28,15 +28,16 @@
     <main class="container" id="content">
         <h2 class="text-center text-uppercase m-3 text-black fw-bold">---------------TOP bài hát yêu thích---------------</h2>
         <div class="row">
-        <?php foreach($articles as $article) { ?>
+        <?php foreach($articles as $article) { 
+                $nameAC = $articleService->getNameAuthorAndCategory($article->getMa_bviet()); ?>
                 <article class="col-sm-3 summary">
                     <div class="card mb-4" style="width: 100%;">
                         <a href="?controller=article&action=detail&id=<?= $article->getMa_bviet(); ?>" class="text-decoration-none">
                             <img src="assets/images/songs/<?= $article->getHinhanh(); ?>" 
                                 alt="<?= $article->getTieude(); ?>" class="card-img-top" style="height: 10em;">
                             <h5 class="card-title text-center fw-bold"><?= $article->getTen_bhat(); ?></h5>
-                            <h6><span class="fw-bold">Tác giả: </span><?= $article->getTen_tgia(); ?></h6>
-                            <h6><span class="fw-bold">Thể loại: </span><?= $article->getTen_tloai(); ?></h6>
+                            <h6><span class="fw-bold">Tác giả: </span><?= $nameAC['tacgia']; ?></h6>
+                            <h6><span class="fw-bold">Thể loại: </span><?= $nameAC['theloai']; ?></h6>
                         </a>
                     </div>
             </article>
