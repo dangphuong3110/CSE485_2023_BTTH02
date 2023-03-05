@@ -1,8 +1,3 @@
-<?php
-if (!isset($name_css)) {
-    $name_css = '';
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +8,7 @@ if (!isset($name_css)) {
     <title><?= $title ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/<?= $name_css ?>">
+    <link rel="stylesheet" href="assets/css/<?= $name_css ?? '' ?>">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -37,9 +32,9 @@ if (!isset($name_css)) {
 
                         <li class="nav-item">
                             <?php session_start(); if (isset($_SESSION['LAST_ACTIVITY'])) { ?>
-                                <a class="nav-link" href="./admin/">Quay lại trang admin</a>
+                                <a class="nav-link" href="?controller=admin">Quay lại trang admin</a>
                             <?php } else { session_destroy(); ?>
-                                <a class="nav-link" href="./login.php">Đăng nhập</a>
+                                <a class="nav-link" href="?controller=login">Đăng nhập</a>
                             <?php } ?>
                         </li>
 
