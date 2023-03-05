@@ -1,14 +1,17 @@
-
 <?php
+include("configs/DBConnection.php");
+include("services/AdminService.php");
 class AdminController {
     public function __construct()
     {
         include("configs/session.php");
     }
     public function index() {
-        $articleService = new ArticleService();
-        $articles = $articleService->getAllArticles();
-        $num_of_articles = $articleService->getNumberOfArticles();
+        $adminService = new AdminService();
+        $num_of_users = $adminService->getNumberOfUsers();
+        $num_of_categories = $adminService->getNumberOfCategories();
+        $num_of_authors = $adminService->getNumberOfAuthors();
+        $num_of_articles = $adminService->getNumberOfArticles();
 
         $title = 'Admin';
         include("views/admin/index.php");

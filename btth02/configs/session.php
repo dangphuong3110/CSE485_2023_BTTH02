@@ -13,7 +13,7 @@ if (!isset($_SESSION['LAST_ACTIVITY'])) {
         $message = "Đã hết thời gian làm việc vui lòng đăng nhập";
         $invalid = true;
         session_destroy();
-        header("Location: ?controller=login");
+        header("Location: ?action=login");
         exit;
     } else {
         $_SESSION['LAST_ACTIVITY'] = time();

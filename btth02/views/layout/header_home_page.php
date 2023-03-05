@@ -34,7 +34,7 @@
                             <?php session_start(); if (isset($_SESSION['LAST_ACTIVITY'])) { ?>
                                 <a class="nav-link" href="?controller=admin">Quay lại trang admin</a>
                             <?php } else { session_destroy(); ?>
-                                <a class="nav-link" href="?controller=login">Đăng nhập</a>
+                                <a class="nav-link" href="?action=login">Đăng nhập</a>
                             <?php } ?>
                         </li>
 

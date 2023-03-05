@@ -8,7 +8,7 @@
                             <a href="" class="text-decoration-none">Người dùng</a>
                         </h5>
                         <h5 class="h1 text-center">
-                            <?= $row_user['so_luong']; ?>
+                            <?= $num_of_users['so_luong']; ?>
                         </h5>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                             <a href="" class="text-decoration-none">Thể loại</a>
                         </h5>
                         <h5 class="h1 text-center">
-                            <?= $row_theloai['so_luong']; ?>
+                            <?= $num_of_categories['so_luong']; ?>
                         </h5>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                         </h5>
 
                         <h5 class="h1 text-center">
-                            <?= $row_tacgia['so_luong']; ?>
+                            <?= $num_of_authors['so_luong']; ?>
                         </h5>
                     </div>
                 </div>
