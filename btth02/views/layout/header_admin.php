@@ -40,7 +40,7 @@
                             <a class="nav-link <?= $controller == 'category' ? 'active fw-bold' : '' ?>" href="?controller=category">Thể loại</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= $controller == 'member' ? 'active fw-bold' : '' ?>" href="?controller=member">Tác giả</a>
+                            <a class="nav-link <?= $controller == 'author' ? 'active fw-bold' : '' ?>" href="?controller=author">Tác giả</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?= $controller == 'article' ? 'active fw-bold' : '' ?>" href="?controller=article">Bài viết</a>

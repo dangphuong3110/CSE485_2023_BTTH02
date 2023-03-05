@@ -165,7 +165,7 @@ INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`, `SLBaiViet`) VALUES
 
 CREATE TABLE `user` (
   `ten_dnhap` varchar(50) NOT NULL,
-  `mat_khau` varchar(100) NOT NULL
+  `mat_khau` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
@@ -173,9 +173,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ten_dnhap`, `mat_khau`) VALUES
-('trinh', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'),
-('hieu', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'),
-('phuong', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
+('trinh', '123456'),
+('hieu', '123456'),
+('phuong', '123456');
 
 -- --------------------------------------------------------
 
@@ -233,6 +233,12 @@ ALTER TABLE `theloai`
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
+
+--
+-- AUTO_INCREMENT cho bảng `tacgia`
+--
+ALTER TABLE `tacgia`
+  MODIFY `ma_tgia` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `theloai`

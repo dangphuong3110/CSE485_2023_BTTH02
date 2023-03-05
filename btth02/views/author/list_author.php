@@ -8,13 +8,13 @@ $title = "Tác giả - Admin";
 require("views/layout/header_admin.php");
 ?>
 
-<main class="container mt-4 mb-5">
+<main class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-sm table-responsive-sm">
+        <div class="col-sm">
             <?php if ($success) { ?><div class="alert alert-success text-center"><?= $success ?></div><?php } ?>
-            <?php if ($failure) { ?><div class="alert alert-danger"><?= $failure ?></div><?php } ?>
-            <a href="?controller=member&action=add" class="btn btn-success mb-2">Thêm mới</a>
-            <table class="table table-bordered table-hover">
+            <?php if ($failure) { ?><div class="alert alert-danger text-center"><?= $failure ?></div><?php } ?>
+            <a href="?controller=author&action=add" class="btn btn-success">Thêm mới</a>
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -27,15 +27,14 @@ require("views/layout/header_admin.php");
                 <tbody>
                     <?php foreach ($authors as $row) { ?>
                         <tr>
-                            <th scope="row"><?= $row->getMaTgia(); ?></th>
-                            <td><?= $row->getTenTgia(); ?></td>
-                            <td><img src="assets/images/authors/<?= $row->getHinhTgia() ?>" alt="Đây là hình tác giả" style="width:100px;"></td>
-                            <td><a href="<?= $row->getMaTgia() ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="delete_author.php?id=<?= $row->getMaTgia() ?>"><i class="fa-solid fa-trash"></i></a></td>
+                            <th scope="row"><?= html_escape($row->getId()); ?></th>
+                            <td><?= html_escape($row->getName()); ?></td>
+                            <td><img src="assets/images/authors/<?= $row->getImage() ?>" alt="Đây là hình tác giả" width="100px"></td>
+                            <td><a href="?controller=author&action=edit&id=<?= html_escape($row->getId()) ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td><a href="?controller=author&action=delete&id=<?= html_escape($row->getId()) ?>"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>
-                
             </table>
         </div>
     </div>
