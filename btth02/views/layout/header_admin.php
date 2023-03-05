@@ -1,19 +1,3 @@
-<?php
-session_start();
-$message = "Đã hết thời gian làm việc vui lòng đăng nhập";
-if (isset($_SESSION['LAST_ACTIVITY'])) {
-    // 60 is logout time when doing nothing
-    if (time() - $_SESSION['LAST_ACTIVITY'] > 60) {
-        session_destroy();
-        header("Location: ../login.php?error=$message");
-    } else {
-        $_SESSION['LAST_ACTIVITY'] = time();
-    }
-} else {
-    session_destroy();
-    header("Location: ../login.php?error=$message");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +5,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= html_escape($title) ?></title>
+    <title><?= $title ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
@@ -44,19 +28,19 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
                             <a class="nav-link active fw-bold" aria-current="page" href="./">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.php">Trang ngoài</a>
+                            <a class="nav-link" href="./">Trang ngoài</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../admin/categories.php">Thể loại</a>
+                            <a class="nav-link" href="?controller=category">Thể loại</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../admin/author.php">Tác giả</a>
+                            <a class="nav-link" href="?controller=author">Tác giả</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../admin/articles.php">Bài viết</a>
+                            <a class="nav-link" href="?controller=article">Bài viết</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../admin/logout.php">Đăng xuất</a>
+                            <a class="nav-link" href="?controller=logout">Đăng xuất</a>
                         </li>
                     </ul>
                 </div>

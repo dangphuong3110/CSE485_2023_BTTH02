@@ -16,8 +16,10 @@ color: #FFC312;
 }
 
 .social_icon span:hover{
-color: white;
+/* color: white; */
+opacity: .6;
 cursor: pointer;
+transition: all .2s linear;
 }
 
 .card-header h3{

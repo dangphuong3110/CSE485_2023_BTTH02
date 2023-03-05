@@ -53,3 +53,6 @@ article.summary a:hover p
 }
 
 
+.error {
+  color: rgb(242, 255, 0);
+}
