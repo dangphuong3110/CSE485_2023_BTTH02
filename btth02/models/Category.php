@@ -7,7 +7,7 @@ class Category{
 
     public function __construct($ma_tloai, $ten_tloai, $SLBaiViet){
         $this->ma_tloai = $ma_tloai;
-        $this->ten_loai = $ten_tloai;
+        $this->ten_tloai = $ten_tloai;
         $this->SLBaiViet= $SLBaiViet;
     }
 
