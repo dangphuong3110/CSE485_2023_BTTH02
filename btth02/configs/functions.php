@@ -18,7 +18,7 @@ function html_escape($text): string
 
 function redirect(string $location, array $parameters = [], $response_code = 302)
 {
-    $qs = $parameters ? '?' . http_build_query($parameters) : ''; 
+    $qs = $parameters ? '&' . http_build_query($parameters) : ''; 
     $location = $location . $qs;                                  
     header('Location: ' . $location, true, $response_code);        
     exit;                                                       
