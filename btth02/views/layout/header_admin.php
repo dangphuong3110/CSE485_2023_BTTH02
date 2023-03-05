@@ -14,6 +14,12 @@
 
 <body>
     <header>
+        <?php 
+            $controller = null;
+            if(isset($_GET['controller'])){
+                $controller = $_GET['controller'];
+            }
+        ?>
         <nav class="navbar navbar-expand-lg bg-body-tertiary shadow p-3 bg-white rounded">
             <div class="container-fluid">
                 <div class="h3">
@@ -25,19 +31,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active fw-bold" aria-current="page" href="?controller=admin">Trang chủ</a>
+                            <a class="nav-link <?= $controller == 'admin' ? 'active fw-bold' : '' ?>" aria-current="page" href="?controller=admin">Trang chủ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./">Trang ngoài</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?controller=category">Thể loại</a>
+                            <a class="nav-link <?= $controller == 'category' ? 'active fw-bold' : '' ?>" href="?controller=category">Thể loại</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?controller=member">Tác giả</a>
+                            <a class="nav-link <?= $controller == 'member' ? 'active fw-bold' : '' ?>" href="?controller=member">Tác giả</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?controller=article">Bài viết</a>
+                            <a class="nav-link <?= $controller == 'article' ? 'active fw-bold' : '' ?>" href="?controller=article">Bài viết</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?action=logout">Đăng xuất</a>
