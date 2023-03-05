@@ -6,19 +6,19 @@ class Article{
     private $tomtat;
     private $noidung;
     private $ngayviet;
-    private $ten_tloai;
-    private $ten_tgia;
+    private $ma_tloai;
+    private $ma_tgia;
     private $hinhanh;
 
-    public function __construct($ma_bviet, $tieude, $ten_bhat, $tomtat, $noidung, $ngayviet, $ten_tloai, $ten_tgia, $hinhanh){
+    public function __construct($ma_bviet, $tieude, $ten_bhat, $tomtat, $noidung, $ngayviet, $ma_tloai, $ma_tgia, $hinhanh){
         $this->ma_bviet = $ma_bviet;
         $this->tieude = $tieude;
         $this->ten_bhat = $ten_bhat;
         $this->tomtat = $tomtat;
         $this->noidung = $noidung;
         $this->ngayviet = $ngayviet;
-        $this->ten_tloai = $ten_tloai;
-        $this->ten_tgia = $ten_tgia;
+        $this->ma_tloai = $ma_tloai;
+        $this->ma_tgia = $ma_tgia;
         $this->hinhanh = $hinhanh;
     }
 
@@ -94,26 +94,26 @@ class Article{
         return $this;
     }
 
-    public function getTen_tloai()
+    public function getMa_tloai()
     {
-        return $this->ten_tloai;
+        return $this->ma_tloai;
     }
  
-    public function setTen_tloai($ten_tloai)
+    public function setMa_tloai($ma_tloai)
     {
-        $this->ten_tloai = $ten_tloai;
+        $this->ma_tloai = $ma_tloai;
 
         return $this;
     }
  
-    public function getTen_tgia()
+    public function getMa_tgia()
     {
-        return $this->ten_tgia;
+        return $this->ma_tgia;
     }
  
-    public function setTen_tgia($ten_tgia)
+    public function setMa_tgia($ma_tgia)
     {
-        $this->ten_tgia = $ten_tgia;
+        $this->ma_tgia = $ma_tgia;
 
         return $this;
     }
